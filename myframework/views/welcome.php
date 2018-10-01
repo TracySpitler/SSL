@@ -12,7 +12,6 @@
 
 </div>
 
-
 <?php
 include('reset.css');
 include('main.css');
