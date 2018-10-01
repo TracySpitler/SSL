@@ -17,6 +17,7 @@ $urlPathParts = explode('/', ltrim(parse_url($str, PHP_URL_PATH), '/'));
 
 include 'router.php';
 
+// div on top of page to display URL
 echo "<p class='url-message'>URL Path Parts: (hover over to display)</p>";
 echo "<div class='overlay'>";
 echo "<span class='url-span'>127.0.0.1</span>";
