@@ -1,0 +1,33 @@
+:root {
+    --yellow: #fdc82e;
+}
+
+a {
+    text-transform: capitalize;
+}
+
+a:hover, .current {
+    border-bottom: solid 2px var(--yellow);
+}
+
+.current:hover {
+    border: none;
+}
+
+
+li {
+    margin: 0 .5rem 0 .5rem;
+}
+
+#myCarousel {
+    width: 50vw;
+}
+
+.div {
+    height: 200px;
+}
+
+iframe {
+    width: 500px;
+    height: 300px;
+}

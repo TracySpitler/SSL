@@ -1,15 +1,14 @@
-
 <?
-// default controller
-class welcome extends AppController
+
+// forms controller
+
+class forms extends AppController
 {
 
     function __construct()
     {
-
-        //$this->getView("header", array("pagename"=>"welcome"));
         $this->displayNav("header");
-        $this->getView("welcome");
+        $this->getView("forms");
         $this->getView("footer");
     }
 

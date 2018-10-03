@@ -1,15 +1,14 @@
-
 <?
-// default controller
-class welcome extends AppController
+
+// videos controller
+
+class videos extends AppController
 {
 
     function __construct()
     {
-
-        //$this->getView("header", array("pagename"=>"welcome"));
         $this->displayNav("header");
-        $this->getView("welcome");
+        $this->getView("videos");
         $this->getView("footer");
     }
 

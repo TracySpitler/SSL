@@ -10,7 +10,7 @@ class Router{
 
         switch($urlPathParts[0]){
 
-            case "home":
+            case "welcome":
 
                 $this->App->startApp($urlPathParts);
 

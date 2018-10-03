@@ -1,15 +1,12 @@
-
 <?
-// default controller
-class welcome extends AppController
+// api controller
+class api extends AppController
 {
 
     function __construct()
     {
-
-        //$this->getView("header", array("pagename"=>"welcome"));
         $this->displayNav("header");
-        $this->getView("welcome");
+        $this->getView("api");
         $this->getView("footer");
     }
 
