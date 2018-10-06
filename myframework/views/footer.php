@@ -32,7 +32,7 @@ $(document).ready(function(){
 
     // AJAX
     $('#ajaxButton').click(function() {
-        alert("Alert: footer.php line 21");
+        alert("Alert: footer.php line 35");
 
         $.ajax({
             method: "POST",
