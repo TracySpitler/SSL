@@ -9,12 +9,11 @@
     <!-- Bootstrap core CSS -->
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/assets/css/custom.css">
-  </head>
-  <body>
+</head>
+<body>
 
 <!-- Start config file -->
 
-<div class='url-div'>
 
 <?
 
@@ -48,10 +47,9 @@ $route = new router($urlPathParts,$config);
 
 <!-- cant get this to work with bootstrap 4?? !!please help!! -->
 <!-- nothing will work without this.. -->
-
 <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-<!-- <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css"> -->
-<script type="text/javascript" src="https://code.jquery.com/jquery.min.js"></script>
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+<script src="https://code.jquery.com/jquery.min.js"></script>
 <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
 <!-- Bootstrap CDN

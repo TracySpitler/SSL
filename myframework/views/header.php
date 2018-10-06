@@ -7,8 +7,10 @@
 <?
 
 foreach ($data as $key => $value) {
-    echo '<li class="',($_SERVER['PHP_SELF'] == "/index.php/$value" ? 'current' : ''),'">';
-    echo "<a class='nav-link' href='/$value'>$value</a></li>";
+    echo '<li class="',($_SERVER['PHP_SELF'] == "/index.php/welcome/$value" ? 'active current' : ''),'">';
+    //echo '<li ',(@$page["pagename"]=="$value"?'class="active current"':''),' >';
+    echo '<a class="nav-link" href="/welcome/'.$value.'">'.$value.'</a></li>';
+    //echo '<a class="nav-link" href="/',($_SERVER['PHP_SELF'] == "/index.php/$value" ? 'active' : ''),''
     //echo "/index.php/$value";
 }
 //echo $_SERVER['PHP_SELF'];

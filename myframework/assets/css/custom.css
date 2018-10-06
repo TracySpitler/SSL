@@ -1,19 +1,24 @@
+@import url("https://use.fontawesome.com/releases/v5.2.0/css/all.css");
+
 :root {
     --yellow: #fdc82e;
+    --blue: #2fabd0;
+    --green: #5cd083;
+    --red: #ed5b6b;
 }
 
 a {
     text-transform: capitalize;
 }
 
-a:hover, .current {
-    border-bottom: solid 2px var(--yellow);
+* {
+  border-radius: 0 !important;
+
 }
 
-.current:hover {
-    border: none;
+li.current {
+    border-bottom: solid 1px var(--yellow);
 }
-
 
 li {
     margin: 0 .5rem 0 .5rem;
@@ -30,4 +35,84 @@ li {
 iframe {
     width: 500px;
     height: 300px;
+}
+
+.form-group {
+    display: flex;
+}
+
+.errorSpan {
+    display: flex;
+    margin-left: -25px;
+    align-items: center;
+    position: relative;
+}
+
+.errorSpan:after {
+    color: #999;
+    font-family: "Font Awesome 5 Free";
+    content: '\f057';
+    font-style: normal;
+    opacity: 0;
+}
+
+.form input {
+    margin: 0 .25rem;
+    min-width: 125px;
+    border: 1px solid #eee;
+    border-left: 3px solid;
+    transition: border-color .5s ease-out;
+    position: relative;
+}
+
+.form input:optional, .form input:required:empty {
+    border-left-color: #999;
+}
+
+.form input:required:valid {
+    border-left-color: var(--green);
+}
+
+.form input:focus:invalid {
+    border-left-color: var(--red);
+}
+
+.form input:required:focus:valid + .errorSpan:after {
+    content: '\f058';
+    color: var(--green);
+    opacity: 1;
+}
+
+.form input:invalid + .errorSpan::after {
+    color: var(--red);
+    opacity: 1;
+}
+
+.form input:focus:invalid + .errorSpan:after {
+    color: var(--red);
+    opacity: 1;
+}
+
+.btn {
+    padding: 1rem;
+    border: solid 2px var(--yellow);
+    background-color: rgba(253, 200, 46, .6);
+}
+
+.btn:hover {
+    background-color: var(--yellow);
+}
+
+.info {
+    background-color: var(--blue);
+    padding: 2rem;
+}
+
+.info h4 {
+    margin-bottom: 2rem;
+}
+
+
+strong {
+    font-weight: bold;
 }
