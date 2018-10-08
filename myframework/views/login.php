@@ -70,7 +70,7 @@
 
     ?>
 
-    <form id="head-login" class="form navbar-form" method='post' action='/auth/login'>
+    <form id="head-login" class="form navbar-form" method='post' action='/welcome/contactRecv'>
         <h2>Log In</h2>
 
         <div class='input-wrapper'>
