@@ -5,10 +5,17 @@
     --blue: #2fabd0;
     --green: #5cd083;
     --red: #ed5b6b;
+    --dark: #343a40;
 }
 
-a {
+body {
+    color: var(--dark);
+}
+
+a, .nav-link {
+    color: rgba(255,255,255,.75);
     text-transform: capitalize;
+    margin: 0 .5rem 0 .5rem;
 }
 
 * {
@@ -16,12 +23,10 @@ a {
 
 }
 
-li.current {
+.current, a:hover, .nav-link:hover {
+    color: white;
     border-bottom: solid 1px var(--yellow);
-}
-
-li {
-    margin: 0 .5rem 0 .5rem;
+    background-color: var(--dark) !important;
 }
 
 #myCarousel {
@@ -32,74 +37,86 @@ li {
     height: 200px;
 }
 
+.alert {
+    padding: 1rem;
+    background-color: var(--blue);
+}
+
 iframe {
     width: 500px;
     height: 300px;
 }
 
-.form-group {
-    display: flex;
-}
-
-.errorSpan {
-    display: flex;
-    margin-left: -25px;
-    align-items: center;
+.input-wrapper {
     position: relative;
+    padding: .5rem;
 }
 
-.errorSpan:after {
+.errorSpan:before {
     color: #999;
     font-family: "Font Awesome 5 Free";
-    content: '\f057';
     font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    content: '\f057';
+    font-size: 18px;
+    top: 1rem;
+    margin-right: 1rem;
+    position: absolute;
+    right: 0;
     opacity: 0;
 }
 
-.form input {
-    margin: 0 .25rem;
-    min-width: 125px;
-    border: 1px solid #eee;
-    border-left: 3px solid;
-    transition: border-color .5s ease-out;
-    position: relative;
+.input-wrapper input {
+  padding-right: 30px;
+  border: 1px solid #eee;
+  border-left: 3px solid #ddd;
+  transition: border-color .5s ease-out;
+  width: 100%;
+  min-width: 125px !important;
 }
 
-.form input:optional, .form input:required:empty {
-    border-left-color: #999;
+.form input:required:empty + .errorSpan:before {
+    border-left-color: #eee;
+    opacity: 0;
 }
 
-.form input:required:valid {
+.form input:valid {
     border-left-color: var(--green);
+}
+
+.signup-form input:required:invalid + .errorSpan:before {
+    content: '*';
+    color: var(--red);
+    opacity: 1;
 }
 
 .form input:focus:invalid {
     border-left-color: var(--red);
 }
 
-.form input:required:focus:valid + .errorSpan:after {
+.form input:focus:valid + .errorSpan:before {
     content: '\f058';
     color: var(--green);
     opacity: 1;
 }
 
-.form input:invalid + .errorSpan::after {
+.form input:focus:invalid + .errorSpan:before {
+    content: '\f057';
     color: var(--red);
     opacity: 1;
 }
 
-.form input:focus:invalid + .errorSpan:after {
-    color: var(--red);
-    opacity: 1;
+
+
+#ajaxButton {
+    color: white;
+    border: solid 2px var(--yellow) !important;
+    background-color: var(--dark);
 }
 
-.btn {
-    padding: 1rem;
-    border: solid 2px var(--yellow);
-    background-color: rgba(253, 200, 46, .6);
-}
-
-.btn:hover {
+#ajaxButton:hover {
+    color: var(--dark);
     background-color: var(--yellow);
 }
 
@@ -115,4 +132,14 @@ iframe {
 
 strong {
     font-weight: bold;
+}
+
+.navbar-dark .navbar-toggler {
+    border-color: transparent; /* Removes border color */
+    margin-left: 1rem;
+    padding: 1rem;
+}
+.navbar-dark .navbar-toggler:hover {
+    border: solid 1px var(--yellow);
+    color: var(--yellow);
 }

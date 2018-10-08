@@ -43,11 +43,11 @@ class welcome extends AppController
     }
 
     // contact
-    public function contact() {
-        $this->displayNav("header");
-        $this->getView("contact");
-        $this->getView("footer");
-    }
+    // public function contact() {
+    //     $this->displayNav("header");
+    //     $this->getView("contact");
+    //     $this->getView("footer");
+    // }
 
     // api
     public function api() {
@@ -58,33 +58,66 @@ class welcome extends AppController
 
 
     // recieve contact information from form
+    // public function contactRecv() {
+    //     $this->displayNav("header");
+    //     echo "<div class='alert'>You have successfully signed up!</div>";
+    //     var_dump($_POST);
+    //     if (!filter_var($_POST["Email"],FILTER_VALIDATE_EMAIL)) {
+    //         echo "email invalid";
+    //         return false;
+    //     }
+    //     else {
+    //         echo "email valid";
+    //         return true;
+    //     }
+    //
+    // }
+
     public function contactRecv() {
         $this->displayNav("header");
-        var_dump($_POST);
-        if (!filter_var($_POST["Email"],FILTER_VALIDATE_EMAIL)) {
-            echo "email invalid";
-            return false;
+        echo "<div class='alert'>You have successfully signed up!</div>";
+
+        if ($_POST==$_SESSION) {
+            if(!filter_var($_POST["Email"],FILTER_VALIDATE_EMAIL)){
+
+                echo "Email invalid";
+                echo "<br><a href='/welcome/login'>Click here to go back</a>";
+            }
+            else {
+                echo "Email valid";
+            }
         }
         else {
-            echo "email valid";
-            return true;
+            echo "Invalid captcha";
+            echo "<br><a href='/welcome/login'>Click here to go back</a>";
         }
     }
+
 
     // recieve ajax parameters
     public function ajaxParams() {
         var_dump($_REQUEST);
         $this->displayNav("header");
         if (@$_REQUEST["Email"]=="tracy@gmail.com" && @$_REQUEST["Password"]=="1234") {
-            echo "<script>alert('Welcome! You have successfully loggd in!');</script>";
+            //echo "<script>alert('Welcome! You have successfully loggd in!')</script>";
             $this->getView("welcome");
         }
         else {
-            echo "<script>alert('Bad login. Please try again.');</script>";
+            //echo "<script>alert('Bad login. Please try again.')</script>";
             $this->getView("login");
         }
 
         $this->getView("footer");
+    }
+
+    public function contact(){
+
+        $this->displayNav("header");
+
+        $random = substr( md5(rand()), 0, 7);
+
+        $this->getView("contact",array("cap"=>$random));
+
     }
 
     // pass array of label data to view

@@ -37,7 +37,7 @@ $(document).ready(function(){
         $.ajax({
             method: "POST",
             url: "/index.php/welcome/ajaxParams",
-            data: {Test: "this is a test for the data passing"},
+            data: {"welcome"},
             success: function(data) {
                 console.log(data);
                 if (data=="welcome") {

@@ -24,6 +24,8 @@
                             <i class="errorSpan"></i>
                         </div>
 
+                        
+
                         <!-- button -->
                         <div class="form-group">
                             <input type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
