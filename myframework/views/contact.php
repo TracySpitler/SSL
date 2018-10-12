@@ -1,4 +1,5 @@
 <!-- contact.php -->
+<div class="main">
 
 <div class="container contact-form">
             <form class="form" method="post" action="/welcome/contactRecv">
@@ -24,7 +25,7 @@
                             <i class="errorSpan"></i>
                         </div>
 
-                        
+
 
                         <!-- button -->
                         <div class="form-group">
@@ -41,3 +42,4 @@
 
 
 ?>
+</div>

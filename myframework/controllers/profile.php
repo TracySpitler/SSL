@@ -11,26 +11,60 @@ class profile extends AppController
         if (@$_SESSION["loggedin"] && @$_SESSION["loggedin"]==1) {
 
         }
+
         else {
-            header("Location:/welcome?msg=Welcome");
 
         }
     }
 
     public function index() {
         $this->displayNav("header");
-        echo "<div class='alert'>You have successfully logged in! (this is a protected controller)</div>";
-        $this->getView("welcome");
+        echo "<div class='alert'>Welcome ".$_SESSION['Email']."! You have successfully logged in! (this is a protected controller)</div>";
+        $this->getView("profile");
         $this->getView("footer");
+    }
+
+    public function update() {
+
+        if ($_FILES["img"]["name"]!="") {
+            $imageFileType = pathinfo("asset/".$_FILES["img"]["name"],PATHINFO_EXTENSION);
+
+            if (file_exists("asset/".$_FILES["img"]["name"])) {
+                echo "sorry, file exists";
+            }
+            else {
+                if ($imageFileType != "jpg" && $imageFileType != "png") {
+                    echo "This file type is not supported. Please choose a differnet file.";
+                }
+                else {
+                    if (move_uploaded_file($_FILES["img"]["tmp_name"], "assets/".$_FILES["img"]["name"])) {
+                        $_SESSION['photo'] = "assets/".$_FILES["img"]["name"];
+                        header("Location:/profile?msg=File Uploaded");
+                        //echo "Your file has uploaded.";
+                        //echo "<img id='img' src='/assets/".$_FILES['img']['name']."'>";
+                    }
+                    else {
+                        echo "There was an error uploading.";
+                    }
+                }
+            }
+        }
+
     }
 
     public function displayNav($view) {
 
         // menu labels
-        $nav = [0=>"welcome", 1=>"forms", 2=>"videos", 3=>"login", 4=>"contact", 5=>"api"];
-
-        // send data to header view
-        $this->getView($view, $nav);
+        if (!isset($_SESSION['loggedin'])) {
+            $nav = [0=>"welcome", 1=>"videos", 2=>"login", 3=>"signup", 4=>"contact", 5=>"api"];
+            // send data to header view
+            $this->getView($view, $nav);
+        }
+        else {
+            $nav = [0=>"welcome", 1=>"videos", 2=>"contact", 3=>"api"];
+            // send data to header view
+            $this->getView($view, $nav);
+        }
 
     }
 }

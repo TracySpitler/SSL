@@ -3,7 +3,7 @@
 <!-- navbar   -->
 <div style="background-color:var(--red);"><?=@$_REQUEST['msg']?@$_REQUEST['msg']:''?></div>
 
-<nav id="header-navigation" class="navbar navbar-toggleagble-lg bg-dark navbar-dark">
+<nav id="header-navigation" class="navbar navbar-toggleagble-lg bg-dark navbar-dark  p-3">
     <div class="container-fluid">
         <!-- header -->
         <div class="navbar-header">
@@ -58,7 +58,12 @@
                     </button>
                 </form>
 
-            <?}?>
+            <?}
+
+            // record digits in session variable
+            //$_SESSION['Email'] = $_POST['Email'];
+            //$_SESSION['Password'] = $_POST['Password'];
+            ?>
 
 
 

@@ -10,6 +10,13 @@
 
 body {
     color: var(--dark);
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.main {
+  flex: 1;
 }
 
 a, .nav-link {
@@ -33,10 +40,6 @@ a, .nav-link {
     width: 50vw;
 }
 
-.div {
-    height: 200px;
-}
-
 .alert {
     padding: 1rem;
     background-color: var(--blue);
@@ -50,6 +53,10 @@ iframe {
 .input-wrapper {
     position: relative;
     padding: .5rem;
+}
+
+.bar {
+    width: 75vw;
 }
 
 .errorSpan:before {
@@ -107,6 +114,13 @@ iframe {
     opacity: 1;
 }
 
+.wrapper {
+    padding: .5rem;
+}
+
+h2 {
+    padding-bottom: 1rem;
+}
 
 
 #ajaxButton {
@@ -142,4 +156,20 @@ strong {
 .navbar-dark .navbar-toggler:hover {
     border: solid 1px var(--yellow);
     color: var(--yellow);
+}
+
+.footer, .footer a {
+    color: white;
+}
+
+.footer a:hover {
+    color: var(--yellow);
+}
+
+.card-desc {
+    color: var(--blue);
+}
+
+.profile-form {
+    padding-top: 1rem;
 }

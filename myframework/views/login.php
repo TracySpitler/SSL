@@ -1,15 +1,11 @@
 <!-- login.php -->
-<div class="info">
-    <h4>Log In Information:</h4>
-    <p><strong>Email:</strong> tracy@gmail.com</p>
-    <p><strong>Password:</strong> 1234</p>
-</div>
+<div class="main">
 
 <div class="container login-form">
 
     <?
 
-    function create_image($cap)
+    function create_image($captcha)
 
     {
 
@@ -43,19 +39,14 @@
 
         $text_color = imagecolorallocate($image, 0, 0, 0);
 
-        ImageString($image, 22, 30, 22, $cap, $text_color);
+        ImageString($image, 22, 30, 22, $captcha, $text_color);
 
         /************************************/
 
         // Create your session variable that carries the data, you will check against this in your controller.
         //
         // Something like $_SESSION[..]=....;
-        // Set session variables
-
-        if (isset($_POST['submit'])) {
-            $_SESSION['Email'] = $_POST['Email'];
-            $_SESSION['Password'] = $_POST['Password'];
-        }
+        // Set session variable
 
 
         /*************************************/
@@ -64,14 +55,20 @@
 
     }
 
-    create_image($data["cap"]);
+    create_image($data["captcha"]);
 
-    echo "<img src='/assets/image1.png'>";
+    // record digits in session variable
+    $_SESSION = $data;
+
+
+
 
     ?>
 
     <form id="head-login" class="form navbar-form" method='post' action='/welcome/contactRecv'>
-        <h2>Log In</h2>
+        <div class="h2">
+            <h2>Log In</h2>
+        </div>
 
         <div class='input-wrapper'>
             <input type='email' id='Email' name='Email' class='form-control' placeholder='Your Email *' value='' required/>
@@ -87,17 +84,16 @@
             <button id='ajaxButton' type='submit' name='ajaxButton' class='btn'/>Log In</button>
         </div>
 
-        <button class="navbar-toggler navbar-right" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbar-links" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div>
-
-            <label for="exampleInputEmail1">Enter Captcha </label>
-
-            <input name="captcha" type="captcha" id="captcha"  placeholder="">
-
+        <div class="wrapper">
+            <img src='/assets/image1.png'>
         </div>
+
+        <div class="wrapper">
+            <label for="captcha">Enter Captcha:</label><br>
+            <input name="captcha" type="captcha" id="captcha"  placeholder="">
+        </div>
+
+
     </form>
 
 
@@ -108,3 +104,5 @@
 
 
 ?>
+
+</div>

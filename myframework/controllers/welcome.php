@@ -31,6 +31,7 @@ class welcome extends AppController
     // login
     public function login() {
         $this->displayNav("header");
+        $this->captcha();
         $this->getView("login");
         $this->getView("footer");
     }
@@ -42,13 +43,6 @@ class welcome extends AppController
         $this->getView("footer");
     }
 
-    // contact
-    // public function contact() {
-    //     $this->displayNav("header");
-    //     $this->getView("contact");
-    //     $this->getView("footer");
-    // }
-
     // api
     public function api() {
         $this->displayNav("header");
@@ -56,67 +50,55 @@ class welcome extends AppController
         $this->getView("footer");
     }
 
-
-    // recieve contact information from form
-    // public function contactRecv() {
-    //     $this->displayNav("header");
-    //     echo "<div class='alert'>You have successfully signed up!</div>";
-    //     var_dump($_POST);
-    //     if (!filter_var($_POST["Email"],FILTER_VALIDATE_EMAIL)) {
-    //         echo "email invalid";
-    //         return false;
-    //     }
-    //     else {
-    //         echo "email valid";
-    //         return true;
-    //     }
-    //
-    // }
-
+    // recieve information from form
     public function contactRecv() {
         $this->displayNav("header");
-        echo "<div class='alert'>You have successfully signed up!</div>";
+        if ($_SESSION['captcha'] == $_POST['captcha']) {
 
-        if ($_POST==$_SESSION) {
             if(!filter_var($_POST["Email"],FILTER_VALIDATE_EMAIL)){
-
                 echo "Email invalid";
-                echo "<br><a href='/welcome/login'>Click here to go back</a>";
+                header("Location:/welcome/login?msg=Invalid Email Address");
+                //echo "<br><a href='/welcome/login'>Click here to go back</a>";
             }
+
             else {
+                $_SESSION = $_POST;
+                header("Location:/auth/login");
                 echo "Email valid";
             }
         }
+
         else {
+            //header("Location:/welcome/login?msg=Invalid Captcha");
             echo "Invalid captcha";
             echo "<br><a href='/welcome/login'>Click here to go back</a>";
+            var_dump($_SESSION);
+            var_dump($_POST);
         }
     }
 
 
-    // recieve ajax parameters
-    public function ajaxParams() {
-        var_dump($_REQUEST);
-        $this->displayNav("header");
-        if (@$_REQUEST["Email"]=="tracy@gmail.com" && @$_REQUEST["Password"]=="1234") {
-            //echo "<script>alert('Welcome! You have successfully loggd in!')</script>";
-            $this->getView("welcome");
-        }
-        else {
-            //echo "<script>alert('Bad login. Please try again.')</script>";
-            $this->getView("login");
-        }
+    // // recieve ajax parameters
+    // public function ajaxParams() {
+    //     var_dump($_REQUEST);
+    //     $this->displayNav("header");
+    //     if (@$_REQUEST["Email"]=="tracy@gmail.com" && @$_REQUEST["Password"]=="1234") {
+    //         //echo "<script>alert('Welcome! You have successfully loggd in!')</script>";
+    //         $this->getView("welcome");
+    //     }
+    //     else {
+    //         //echo "<script>alert('Bad login. Please try again.')</script>";
+    //         $this->getView("login");
+    //     }
+    //
+    //     $this->getView("footer");
+    // }
 
-        $this->getView("footer");
-    }
-
-    public function contact(){
-
-        $this->displayNav("header");
+    // captcha
+    public function captcha(){
 
         $random = substr( md5(rand()), 0, 7);
-
-        $this->getView("contact",array("cap"=>$random));
+        $this->getView("login",array("captcha"=>$random));
 
     }
 
@@ -124,10 +106,17 @@ class welcome extends AppController
     public function displayNav($view) {
 
         // menu labels
-        $nav = [0=>"welcome", 1=>"videos", 2=>"login", 3=>"signup", 4=>"contact", 5=>"api"];
+        if (!isset($_SESSION['loggedin'])) {
+            $nav = [0=>"welcome", 1=>"videos", 2=>"login", 3=>"signup", 4=>"contact", 5=>"api"];
+            // send data to header view
+            $this->getView($view, $nav);
+        }
+        else {
+            $nav = [0=>"welcome", 1=>"videos", 2=>"contact", 3=>"api"];
+            // send data to header view
+            $this->getView($view, $nav);
+        }
 
-        // send data to header view
-        $this->getView($view, $nav);
 
     }
 }

@@ -1,8 +1,13 @@
 <!-- signup.php -->
+<div class="main">
 
 <div class="container signup-form">
     <form class="form" method="post" action="/welcome/contactRecv">
-        <h2>Sign Up</h2>
+
+        <div class="wrapper">
+            <h2>Sign Up</h2>
+        </div>
+
         <div class="row">
             <div class="col-md-10">
 
@@ -128,3 +133,5 @@
 
 
 ?>
+
+</div>
