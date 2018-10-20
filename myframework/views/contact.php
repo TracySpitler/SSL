@@ -15,7 +15,7 @@
 
                         <!-- email -->
                         <div class="form-group">
-                            <input type="email" name="Email" class="form-control" placeholder="Your Email *" value="" required/>
+                            <input type="email" name="email" class="form-control" placeholder="Your Email *" value="" required/>
                             <i class="errorSpan"></i>
                         </div>
 

@@ -122,14 +122,13 @@ h2 {
     padding-bottom: 1rem;
 }
 
-
 #ajaxButton {
-    color: white;
     border: solid 2px var(--yellow) !important;
+    color: white;
     background-color: var(--dark);
 }
 
-#ajaxButton:hover {
+#ajaxButton:hover{
     color: var(--dark);
     background-color: var(--yellow);
 }
@@ -172,4 +171,107 @@ strong {
 
 .profile-form {
     padding-top: 1rem;
+}
+
+button.add {
+    border: solid 2px var(--yellow) !important;
+}
+
+.fruit-btn {
+    padding: .3rem;
+    color: var(--dark) !important;
+    background-color: white;
+    text-decoration: none !important;
+}
+
+.fruit-btn:hover {
+    border-top: solid 2px var(--yellow) !important;
+    background-color: var(--yellow) !important;
+    color: var(--dark) !important;
+}
+
+a.delete {
+    border-bottom: solid 2px var(--red) !important;
+}
+
+a.delete:hover {
+    border-top: solid 2px var(--red) !important;
+    background-color: var(--red) !important;
+    color: white !important;
+}
+
+a.edit {
+    border-bottom: solid 2px var(--blue) !important;
+    margin-left: 3rem;
+}
+
+a.edit:hover {
+    border-top: solid 2px var(--blue) !important;
+    background-color: var(--blue) !important;
+    color: white !important;
+}
+
+a.update {
+    border-bottom: solid 2px var(--blue) !important;
+}
+
+a.update:hover {
+    border-top: solid 2px var(--blue) !important;
+    background-color: var(--blue) !important;
+    color: white !important;
+}
+
+a, button {
+    cursor: pointer;
+}
+
+.buy-btn {
+    margin-top: 1rem;
+    padding: 1rem;
+    width: 100%;
+    border: none;
+}
+
+.book-item {
+    margin: 1rem;
+}
+
+.book-item:hover {
+    box-shadow: 0 0 20px #ddd;
+    cursor: pointer;
+}
+
+.book-item:hover .buy-btn {
+    background-color: var(--yellow) !important;
+}
+
+.book-links, .book-links:hover {
+    text-decoration: none;
+    color: var(--dark);
+}
+
+.current-search {
+    color: var(--blue);
+}
+
+#search-container {
+    padding-left: 1rem;
+}
+
+#parent {
+  display: flex;
+}
+#narrow {
+  width: 15vw;
+  text-align: right;
+}
+#wide {
+    flex: 1;
+    padding-right: 1rem;
+}
+
+.google {
+    color: var(--blue);
+    padding: 1rem;
+    margin-left: 1rem;
 }

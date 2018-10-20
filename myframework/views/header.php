@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <!-- header -->
         <div class="navbar-header">
-            <a class="navbar-brand" href=""><strong>SSL</strong></a>
+            <a class="navbar-brand" href="/welcome"><strong>SSL</strong></a>
 
 
         </div>
@@ -24,6 +24,13 @@
                     //echo '<a class="nav-link" href="/',($_SERVER['PHP_SELF'] == "/index.php/$value" ? 'active' : ''),''
                     //echo "/index.php/$value";
                 }
+                echo '<li class="">';
+                echo '<a class="nav-link ',($_SERVER['PHP_SELF'] == "/index.php/about" ? 'active current' : ''),'" href="/about">About</a></li>';
+
+                echo '<li class="">';
+                echo '<a class="nav-link ',($_SERVER['PHP_SELF'] == "/index.php/api" ? 'active current' : ''),'" href="/api">API</a></li>';
+
+
             ?>
         </ul>
 
@@ -43,11 +50,11 @@
 
                 <form id="head-login" class="form form-inline navbar-form" method='post' action='/auth/login'>
                     <div class='input-wrapper'>
-                        <input type='email' id='Email' name='Email' class='form-control' placeholder='Your Email *' value='' required/>
+                        <input type='email' id='Email' name='email' class='form-control' placeholder='Your Email *' value='' required/>
                         <i class=errorSpan></i>
                     </div>
                     <div class='input-wrapper'>
-                        <input type='password' id='Password' name='Password' class='form-control' minlength='4' placeholder='Password' * value='' required/>
+                        <input type='password' id='Password' name='password' class='form-control' minlength='4' placeholder='Password' * value='' required/>
                         <i class='errorSpan'></i>
                     </div>
                     <div class='input-wrapper'>

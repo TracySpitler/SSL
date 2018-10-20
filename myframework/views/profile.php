@@ -40,8 +40,8 @@
 
                 <?
 
-                if (isset($_SESSION['Email'])) {
-                    echo "<h3 class='card-title'>".$_SESSION['Email']."</h3>";
+                if (isset($_SESSION['email'])) {
+                    echo "<h3 class='card-title'>".$_SESSION['email']."</h3>";
                 }
                 else {
                     echo "<h3 class='card-title'>Tracy Spitler</h3>";
@@ -70,6 +70,33 @@
                 </form>
             </div>
         </div>
+
+        <!-- change email and password -->
+        <div style="margin-top: 1rem; padding: 1rem;">
+            <h4><strong>Update your information:</strong></h4>
+        </div>
+
+        <form class="" id="updateEmail" style="margin: 1rem 0 1rem 0;" action="/auth/change" method="post">
+
+            <div class='input-wrapper'>
+                <input type='email' id='newEmail' name='email' class='form-control' placeholder='New Email Address' value='' required/>
+                <i class=errorSpan></i>
+            </div>
+
+            <a class="fruit-btn" type="submit" name="update email">Update Email</a>
+        </form>
+
+        <form class="" id="updatePassword" style="margin: 1rem 0 1rem 0;" action="/auth/change" method="post">
+
+            <div class='input-wrapper'>
+                <input type='password' id='newPassword' name='password' class='form-control' minlength='4' placeholder='New Password' * value='' required/>
+                <i class='errorSpan'></i>
+            </div>
+
+            <a class="fruit-btn" type="submit" name="update password">Update Password</a>
+        </form>
+
+        <a href="auth/delete" class='delete profile_gone'>DELETE YOUR PROFILE (this is irreversable!)</a>
 
 
 

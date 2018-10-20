@@ -6,8 +6,19 @@ class AppController
 
     public function __construct($urlPathParts, $config)
     {
-        // db information
-        $this->db = new PDO("mysql:dbname=".$config["dbname"].";",$config["dbuser"],$config["dbpass"]);
+        $dsn = 'mysql:dbname=fruits;host=127.0.0.1';
+        $user = 'root';
+        $pass = 'root';
+
+        try {
+            $dbh = new PDO('mysql:host=localhost;dbname=fruits', $user, $pass);
+            $this->db = new PDO('mysql:host=localhost;dbname=fruits', $user, $pass);
+            $dbh = null;
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
+
         $this->urlPathParts = $urlPathParts;
 
         // check for controller
@@ -61,8 +72,11 @@ class AppController
     }
 
     public function getModel($page, $data=array()) {
-        // add this later
+        
         // then pass data to that page(view)
+        require_once './models/'.$page.".php";
+        $model = new $page($this);
+        return $model;
     }
 }
 

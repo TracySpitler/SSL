@@ -36,10 +36,10 @@ class welcome extends AppController
         $this->getView("footer");
     }
 
-    // sign up
-    public function signup() {
+    // register
+    public function register() {
         $this->displayNav("header");
-        $this->getView("signup");
+        $this->getView("register");
         $this->getView("footer");
     }
 
@@ -55,14 +55,14 @@ class welcome extends AppController
         $this->displayNav("header");
         if ($_SESSION['captcha'] == $_POST['captcha']) {
 
-            if(!filter_var($_POST["Email"],FILTER_VALIDATE_EMAIL)){
+            if(!filter_var($_POST["email"],FILTER_VALIDATE_EMAIL)){
                 echo "Email invalid";
                 header("Location:/welcome/login?msg=Invalid Email Address");
                 //echo "<br><a href='/welcome/login'>Click here to go back</a>";
             }
 
             else {
-                $_SESSION = $_POST;
+                //$_SESSION = $_POST;
                 header("Location:/auth/login");
                 echo "Email valid";
             }
@@ -107,12 +107,12 @@ class welcome extends AppController
 
         // menu labels
         if (!isset($_SESSION['loggedin'])) {
-            $nav = [0=>"welcome", 1=>"videos", 2=>"login", 3=>"signup", 4=>"contact", 5=>"api"];
+            $nav = [0=>"welcome", 1=>"videos", 2=>"login", 3=>"register"];
             // send data to header view
             $this->getView($view, $nav);
         }
         else {
-            $nav = [0=>"welcome", 1=>"videos", 2=>"contact", 3=>"api"];
+            $nav = [0=>"welcome", 1=>"videos"];
             // send data to header view
             $this->getView($view, $nav);
         }

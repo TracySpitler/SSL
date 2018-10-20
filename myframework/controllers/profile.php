@@ -19,7 +19,7 @@ class profile extends AppController
 
     public function index() {
         $this->displayNav("header");
-        echo "<div class='alert'>Welcome ".$_SESSION['Email']."! You have successfully logged in! (this is a protected controller)</div>";
+        echo "<div class='alert'>Welcome ".$_SESSION['email']."! You have successfully logged in! (this is a protected controller)</div>";
         $this->getView("profile");
         $this->getView("footer");
     }
@@ -56,12 +56,12 @@ class profile extends AppController
 
         // menu labels
         if (!isset($_SESSION['loggedin'])) {
-            $nav = [0=>"welcome", 1=>"videos", 2=>"login", 3=>"signup", 4=>"contact", 5=>"api"];
+            $nav = [0=>"welcome", 1=>"videos", 2=>"login", 3=>"register"];
             // send data to header view
             $this->getView($view, $nav);
         }
         else {
-            $nav = [0=>"welcome", 1=>"videos", 2=>"contact", 3=>"api"];
+            $nav = [0=>"welcome", 1=>"videos"];
             // send data to header view
             $this->getView($view, $nav);
         }
